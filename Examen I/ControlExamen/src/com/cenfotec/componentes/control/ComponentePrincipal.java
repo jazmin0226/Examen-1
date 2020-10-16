@@ -54,8 +54,8 @@ public class ComponentePrincipal extends javax.swing.JPanel {
             successTotalMsg(total);
             int exist = exist(x);
             
-            if(exist > 4){
-                successPartialMsg(4);
+            if(exist >= 0 && exist < 4){
+                successPartialMsg(exist);
             }
             
             subtractAttempts();
@@ -72,16 +72,27 @@ public class ComponentePrincipal extends javax.swing.JPanel {
     }
     
     private int exist(char[] x){
-        int cont = 0;
+        String[] cont = new String[4];
+        int counter = 0;
          
         for(int i = 0; i < x.length; i++){ 
             for ( String letter : combination) {
                 if (letter.equals( String.valueOf(x[i]) )) {
-                    cont += 1;
+                    cont[i] = letter;   
                 }   
             }
+            System.out.println(cont[i]);
         }
-        return cont;
+        
+        for(int i = 0; i < cont.length; i++){ 
+            if(cont[i] != null){
+                counter += 1;
+            }
+        }
+        
+        
+         
+        return counter;
     }
     
     private void successPartialMsg(int num){
