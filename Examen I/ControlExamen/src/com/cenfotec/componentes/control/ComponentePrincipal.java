@@ -50,12 +50,12 @@ public class ComponentePrincipal extends javax.swing.JPanel {
     private void validateLetters(char[] x){
         int total = compare(x);
         
-        if( total != 0 && total < 4){
+        if( total >= 0 && total < 4){
             successTotalMsg(total);
             int exist = exist(x);
             
-            if(exist != 0 && exist < 4){
-                successPartialMsg(exist);
+            if(exist > 4){
+                successPartialMsg(4);
             }
             
             subtractAttempts();
@@ -103,6 +103,7 @@ public class ComponentePrincipal extends javax.swing.JPanel {
             subtractAttempts();
         }else{
             result.setText("Game Over");
+            result2.setText(getCombination());
             btnStartGame.setEnabled(true);
             disableBtn();
         }
@@ -126,6 +127,15 @@ public class ComponentePrincipal extends javax.swing.JPanel {
             }
         }
         return cont;
+    }
+    
+    private String getCombination(){
+        String comb = "";
+        
+        for(int i = 0; i < combination.length; i++){
+            comb += String.valueOf(combination[i]);
+        }
+        return comb;
     }
 
     
