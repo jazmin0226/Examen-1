@@ -81,7 +81,6 @@ public class ComponentePrincipal extends javax.swing.JPanel {
                     cont[i] = letter;   
                 }   
             }
-            System.out.println(cont[i]);
         }
         
         for(int i = 0; i < cont.length; i++){ 
